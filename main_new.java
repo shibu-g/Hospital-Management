@@ -101,6 +101,16 @@ public class main_new extends JFrame {
 		btnNewButton_1_3.setFont(new Font("Tahoma", Font.BOLD, 26));
 		btnNewButton_1_3.setBounds(38, 412, 365, 41);
 		contentPane.add(btnNewButton_1_3);
+
+             JButton btnNewButton_1_4 = new JButton("FullHistoryOfPatients");
+		btnNewButton_1_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new delete_patient().setVisible(true);
+			}
+		});
+		btnNewButton_1_4.setFont(new Font("Segoe UI", Font.BOLD, 27));
+		btnNewButton_1_4.setBounds(38, 407, 389, 45);
+		contentPane.add(btnNewButton_1_4);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("G:\\bay_10-wallpaper-1366x768.jpg"));
