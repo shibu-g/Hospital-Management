@@ -77,13 +77,44 @@ public class log_in extends JFrame {
 		JButton btnNewButton = new JButton("LOG IN");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(text.getText().equals("shibu") && pass.getText().equals("shibu123")){
+				String id=text.getText();
+				String pas=pass.getText();
+				try {
+					Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/inventory","root","shibu7462");
+					Statement st=con.createStatement();
+					PreparedStatement psst=con.prepareStatement("SELECT * FROM inventory.log_in_info WHERE user_name =?");
+					psst.setString(1, id);
+					ResultSet rst=psst.executeQuery();
+					if(rst.next()) {
+						if(rst.getString("pass").equals(pas)) {
+							 new main_new().setVisible(true);
+						}
+						else {
+							JOptionPane.showMessageDialog(null,"Incorrect Username or Password");
+							text.setText("");
+							pass.setText("");
+						}
+					}
+					else {
+						JOptionPane.showMessageDialog(null,"Incorrect Username or Password");
+						text.setText("");
+						pass.setText("");
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null,"Incorrect Username or Password");
+					text.setText("");
+					pass.setText("");
+					//System.out.print(e1);
+					e1.printStackTrace();
+				}
+				/* if(text.getText().equals("shibu") && pass.getText().equals("shibu123")){
 		            setVisible(false); // for Login Page
 		           new main_new().setVisible(true);
 			}
 				else {
 					JOptionPane.showMessageDialog(null,"Incorrect Username or Password");
-				}
+				}*/
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -110,6 +141,16 @@ public class log_in extends JFrame {
 		lblNewLabel_1_1.setBackground(new Color(255, 0, 128));
 		lblNewLabel_1_1.setBounds(391, 330, 289, 64);
 		contentPane.add(lblNewLabel_1_1);
+		
+		JButton btnNewButton_2 = new JButton("Create New Account");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new create_new().setVisible(true);
+			}
+		});
+		btnNewButton_2.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNewButton_2.setBounds(1006, 22, 347, 57);
+		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setLabelFor(lblNewLabel);
