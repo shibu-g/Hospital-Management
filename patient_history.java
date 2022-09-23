@@ -60,7 +60,7 @@ public class patient_history extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("Full History Of Patient");
 		lblNewLabel_1.setBackground(new Color(255, 255, 255));
-		lblNewLabel_1.setForeground(new Color(255, 255, 128));
+		lblNewLabel_1.setForeground(new Color(0, 0, 0));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 30));
 		lblNewLabel_1.setBounds(190, 11, 483, 60);
 		contentPane.add(lblNewLabel_1);
